@@ -5,6 +5,7 @@
 
 
 import java.awt.Dimension;
+import java.awt.Frame;
 import java.awt.Graphics;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
@@ -24,17 +25,26 @@ public class MagicBox extends JPanel implements Runnable, MouseListener {
 	 * When the user clicks on a secret place, stuff will happen.
 	 * 
 	 * 1. Make the frame respond to mouse clicks.
-	 * 
+	done
 	 * 2. When the mouse is clicked, use the Media Palace (read the code in the default package) to play sounds, show images or speak.
 	 * 
 	 * 3. backgroundImage.getRGB(keyEvent.getX(), keyEvent.getY()) will give you the color of the current pixel.
 	 */
-
 	BufferedImage backgroundImage;
+	
+	
+	public void playMusicOnComputer(String fileName) {
+		File fileToPlay = new File(fileName);
+		try {
+			java.awt.Desktop.getDesktop().open(fileToPlay);
+		} catch (IOException e1) {
+			e1.printStackTrace();
+		}
+	}
 
 	public static void main(String[] args) throws Exception {
 		SwingUtilities.invokeLater(new MagicBox());
-	
+
 		
 		
 	}
@@ -52,6 +62,7 @@ public class MagicBox extends JPanel implements Runnable, MouseListener {
 	private void createUI() {
 		JFrame frame = new JFrame("The Magic Box contains many secrets...");
 		frame.add(this);
+		frame.addMouseListener(this);
 		setPreferredSize(new Dimension(backgroundImage.getWidth(), backgroundImage.getHeight()));
 		frame.pack();
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -75,6 +86,7 @@ public class MagicBox extends JPanel implements Runnable, MouseListener {
 	@Override
 	public void mouseClicked(MouseEvent e) {
 		// TODO Auto-generated method stub
+		System.out.println(backgroundImage.getRGB(e.getX(), e.getY()));
 		
 	}
 
