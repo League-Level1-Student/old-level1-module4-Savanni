@@ -10,6 +10,7 @@ import java.awt.Graphics;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
+import java.io.Console;
 import java.io.File;
 import java.io.IOException;
 
@@ -17,6 +18,9 @@ import javax.imageio.ImageIO;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
+
+import sun.awt.image.PixelConverter.Rgba;
+import sun.awt.motif.X11GB2312;
 
 public class MagicBox extends JPanel implements Runnable, MouseListener {
 
@@ -86,9 +90,18 @@ public class MagicBox extends JPanel implements Runnable, MouseListener {
 	@Override
 	public void mouseClicked(MouseEvent e) {
 		// TODO Auto-generated method stub
-		System.out.println(backgroundImage.getRGB(e.getX(), e.getY()));
+System.out.println(backgroundImage.getRGB(e.getX(),e.getY()));
+
+
+		if(backgroundImage.getRGB(e.getX(),e.getY()) == -9911626) {
+			
+			
+		}
+			
 		
-	}
+			
+		}
+	
 
 	@Override
 	public void mousePressed(MouseEvent e) {
